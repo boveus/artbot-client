@@ -65,7 +65,6 @@
 
 	var $ = __webpack_require__(12);
 
-
 	$(document).ready(function () {
 	  $(document).on({
 	    click: function click(event) {
@@ -118,7 +117,7 @@
 
 	function circleHtml() {
 	  var circle = new _circle.Circle();
-	  var html = "<circle ";
+	  var html = '<circle ';
 	  html += 'cx=\'' + circle.x + '\' cy=\'' + circle.y + '\' r=\'' + circle.radius + '\' stroke=\'' + circle.stroke + '\'';
 	  html += ' stroke-width=\'' + circle.stroke_width + '\' fill=\'' + circle.fill + '\' opacity=\'' + circle.opacity + '\'>';
 	  if (circle.animated) {
@@ -149,10 +148,9 @@
 	  _classCallCheck(this, Circle);
 
 	  var attributes = ['cx', 'cy', 'cr'];
-	  var trueOrFalse = [true, false];
 
-	  this.x = Math.floor(Math.random() * 3500) + 1;
-	  this.y = Math.floor(Math.random() * 2000) + 1;
+	  this.x = Math.floor(Math.random() * 500) + 1;
+	  this.y = Math.floor(Math.random() * 500) + 1;
 	  this.radius = Math.floor(Math.random() * 400) + 1;
 	  this.stroke = (0, _randomColor.getRandomRgb)();
 	  this.stroke_width = Math.floor(Math.random() * 5) + 1;
@@ -175,17 +173,17 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.getRandomRgb = getRandomRgb;
 
 
 	function getRandomRgb() {
-	    var num = Math.round(0xffffff * Math.random());
-	    var r = num >> 16;
-	    var g = num >> 8 & 255;
-	    var b = num & 255;
-	    return "rgb(" + r + "," + g + "," + b + ")";
+	  var num = Math.round(0xffffff * Math.random());
+	  var r = num >> 16;
+	  var g = num >> 8 & 255;
+	  var b = num & 255;
+	  return "rgb(" + r + "," + g + "," + b + ")";
 	}
 
 /***/ }),
@@ -234,10 +232,9 @@
 	  _classCallCheck(this, Rectangle);
 
 	  var attributes = ['x', 'y', 'width', 'height'];
-	  var trueOrFalse = [true, false];
 
-	  this.x = Math.floor(Math.random() * 3500) + 1;
-	  this.y = Math.floor(Math.random() * 2000) + 1;
+	  this.x = Math.floor(Math.random() * 500) + 1;
+	  this.y = Math.floor(Math.random() * 500) + 1;
 	  this.height = Math.floor(Math.random() * 1500) + 1;
 	  this.width = Math.floor(Math.random() * 1500) + 1;
 	  this.stroke = (0, _randomColor.getRandomRgb)();
@@ -300,14 +297,13 @@
 	  _classCallCheck(this, Line);
 
 	  var attributes = ['x', 'y', 'width', 'height'];
-	  var trueOrFalse = [true, false];
 
-	  this.x1 = Math.floor(Math.random() * 3500) + 1;
-	  this.y1 = Math.floor(Math.random() * 3500) + 1;
-	  this.x2 = Math.floor(Math.random() * 3500) + 1;
-	  this.y2 = Math.floor(Math.random() * 3500) + 1;
-	  this.height = Math.floor(Math.random() * 1500) + 1;
-	  this.width = Math.floor(Math.random() * 1500) + 1;
+	  this.x1 = Math.floor(Math.random() * 500) + 1;
+	  this.y1 = Math.floor(Math.random() * 500) + 1;
+	  this.x2 = Math.floor(Math.random() * 500) + 1;
+	  this.y2 = Math.floor(Math.random() * 500) + 1;
+	  this.height = Math.floor(Math.random() * 500) + 1;
+	  this.width = Math.floor(Math.random() * 500) + 1;
 	  this.stroke = (0, _randomColor.getRandomRgb)();
 	  this.stroke_width = Math.floor(Math.random() * 5) + 1;
 	  this.fill = (0, _randomColor.getRandomRgb)();
@@ -337,7 +333,7 @@
 
 	function polylineHtml() {
 	  var polyline = new _polyline.Polyline();
-	  var html = "<polyline ";
+	  var html = '<polyline ';
 	  html += 'points=\'' + polyline.points + '\' stroke=\'' + polyline.stroke + '\'';
 	  html += ' stroke-width=\'' + polyline.stroke_width + '\' fill=\'' + polyline.fill + '\' opacity=\'' + polyline.opacity + '\'>';
 	  if (polyline.animated) {
@@ -393,8 +389,8 @@
 	  var points = '';
 	  var times = Math.floor(Math.random() * num) + 1;
 	  for (var i = 0; i < times; i++) {
-	    var num1 = Math.floor(Math.random() * 3500) + 1;
-	    var num2 = Math.floor(Math.random() * 3500) + 1;
+	    var num1 = Math.floor(Math.random() * 500) + 1;
+	    var num2 = Math.floor(Math.random() * 500) + 1;
 	    points += num1 + ',' + num2 + ' ';
 	  }
 	  return points.trim();

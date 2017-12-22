@@ -8,12 +8,23 @@
 </head>
 
 <body>
-  <button type="button" id='make-circle'> Make a circle! </button>
-  <button type="button" id='make-rectangle'> Make a rectangle! </button>
-  <button type="button" id='make-line'> Make a line! </button>
-  <button type="button" id='make-polyline'> Make a polyline! </button>
   <div id='svg-area'>
-    <svg width="500" height="500" id='main-svg'>
+    <svg class='border' width="500" height="500" id='main-svg'>
+      </svg>
+  </div>
+
+  <div class='container'>
+    <svg>
+      <circle id='make-circle' cx="25" cy="25" r="25"/>
+    </svg>
+    <svg>
+      <rect id='make-rectangle' width="50" height="40" />
+    </svg>
+    <svg>
+      <line id='make-line' x1="20" y1="60" x2="60" y2="20" stroke-width="6" stroke="black" />
+    </svg>
+    <svg>
+      <polyline id='make-polyline' points="20,20 40,25 60,40 40,60" style="fill:none;stroke:black;stroke-width:5" />
     </svg>
   </div>
 
