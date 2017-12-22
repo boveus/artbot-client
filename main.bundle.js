@@ -44,8 +44,6 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
-
 	//index.html
 	__webpack_require__(1);
 
@@ -53,31 +51,24 @@
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	const $ = __webpack_require__(2);
+	import { circleHtml } from '../generate-shapes/circle-html.js';
+	import { rectangleHtml } from '../generate-shapes/rectangle-html.js';
+	import { lineHtml } from '../generate-shapes/line-html.js';
+	import { polylineHtml } from '../generate-shapes/polyline-html.js';
 
-	var _circleHtml = __webpack_require__(2);
-
-	var _rectangleHtml = __webpack_require__(5);
-
-	var _lineHtml = __webpack_require__(7);
-
-	var _polylineHtml = __webpack_require__(9);
-
-	var $ = __webpack_require__(12);
-
-
-	$(document).ready(function () {
+	$(document).ready(() => {
 	  $(document).on({
-	    click: function click(event) {
-	      var circle = (0, _circleHtml.circleHtml)();
+	    click: function (event) {
+	      let circle = circleHtml();
 	      $('#main-svg').append(circle);
 	      $('#svg-area').html($('#svg-area').html());
 	    }
 	  }, '#make-circle');
 
 	  $(document).on({
-	    click: function click(event) {
-	      var rectangle = (0, _rectangleHtml.rectangleHtml)();
+	    click: function (event) {
+	      let rectangle = rectangleHtml();
 	      $('#main-svg').append(rectangle);
 	      console.log(rectangle);
 	      $('#svg-area').html($('#svg-area').html());
@@ -85,8 +76,8 @@
 	  }, '#make-rectangle');
 
 	  $(document).on({
-	    click: function click(event) {
-	      var line = (0, _lineHtml.lineHtml)();
+	    click: function (event) {
+	      let line = lineHtml();
 	      $('#main-svg').append(line);
 	      console.log(line);
 	      $('#svg-area').html($('#svg-area').html());
@@ -94,8 +85,8 @@
 	  }, '#make-line');
 
 	  $(document).on({
-	    click: function click(event) {
-	      var polyline = (0, _polylineHtml.polylineHtml)();
+	    click: function (event) {
+	      let polyline = polylineHtml();
 	      $('#main-svg').append(polyline);
 	      console.log(polyline);
 	      $('#svg-area').html($('#svg-area').html());
@@ -105,303 +96,6 @@
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.circleHtml = undefined;
-
-	var _circle = __webpack_require__(3);
-
-	function circleHtml() {
-	  var circle = new _circle.Circle();
-	  var html = "<circle ";
-	  html += 'cx=\'' + circle.x + '\' cy=\'' + circle.y + '\' r=\'' + circle.radius + '\' stroke=\'' + circle.stroke + '\'';
-	  html += ' stroke-width=\'' + circle.stroke_width + '\' fill=\'' + circle.fill + '\' opacity=\'' + circle.opacity + '\'>';
-	  if (circle.animated) {
-	    html += ' <animate attributetype="XML" attributename=\'' + circle.animation_attr + '\' from=\'' + circle.animation_from + '\' to=\'' + circle.animation_to + '\' dur=\'' + circle.animation_dur + '\' repeatcount=\'indefinite\' />';
-	  }
-	  html += '</circle>';
-	  return html;
-	}
-
-	exports.circleHtml = circleHtml;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Circle = undefined;
-
-	var _randomColor = __webpack_require__(4);
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var Circle = function Circle() {
-	  _classCallCheck(this, Circle);
-
-	  var attributes = ['cx', 'cy', 'cr'];
-	  var trueOrFalse = [true, false];
-
-	  this.x = Math.floor(Math.random() * 3500) + 1;
-	  this.y = Math.floor(Math.random() * 2000) + 1;
-	  this.radius = Math.floor(Math.random() * 400) + 1;
-	  this.stroke = (0, _randomColor.getRandomRgb)();
-	  this.stroke_width = Math.floor(Math.random() * 5) + 1;
-	  this.fill = (0, _randomColor.getRandomRgb)();
-	  this.opacity = Math.random();
-	  this.animation_attr = attributes[Math.floor(Math.random() * 2) + 1];
-	  this.animation_from = Math.floor(Math.random() * 500) + 1;
-	  this.animation_to = Math.floor(Math.random() * 500) + 1;
-	  this.animation_dur = Math.floor(Math.random() * 120) + 1;
-	  this.animation_repeat = Math.floor(Math.random() * 120) + 1;
-	  this.animated = false;
-	};
-
-	exports.Circle = Circle;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.getRandomRgb = getRandomRgb;
-
-
-	function getRandomRgb() {
-	    var num = Math.round(0xffffff * Math.random());
-	    var r = num >> 16;
-	    var g = num >> 8 & 255;
-	    var b = num & 255;
-	    return "rgb(" + r + "," + g + "," + b + ")";
-	}
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.rectangleHtml = undefined;
-
-	var _rectangle = __webpack_require__(6);
-
-	function rectangleHtml() {
-	  var rectangle = new _rectangle.Rectangle();
-	  var html = "<rect ";
-	  html += 'x=\'' + rectangle.x + '\' y=\'' + rectangle.y + '\' height=\'' + rectangle.height + '\' width=\'' + rectangle.width + '\' stroke=\'' + rectangle.stroke + '\'';
-	  html += ' stroke-width=\'' + rectangle.stroke_width + '\' fill=\'' + rectangle.fill + '\' opacity=\'' + rectangle.opacity + '\'>';
-	  if (rectangle.animated) {
-	    html += ' <animate attributetype="XML" attributename=\'' + rectangle.animation_attr + '\' from=\'' + rectangle.animation_from + '\' to=\'' + rectangle.animation_to + '\' dur=\'' + rectangle.animation_dur + '\' repeatcount=\'indefinite\' />';
-	  }
-	  html += '</rect>';
-	  return html;
-	}
-
-	exports.rectangleHtml = rectangleHtml;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Rectangle = undefined;
-
-	var _randomColor = __webpack_require__(4);
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var Rectangle = function Rectangle() {
-	  _classCallCheck(this, Rectangle);
-
-	  var attributes = ['x', 'y', 'width', 'height'];
-	  var trueOrFalse = [true, false];
-
-	  this.x = Math.floor(Math.random() * 3500) + 1;
-	  this.y = Math.floor(Math.random() * 2000) + 1;
-	  this.height = Math.floor(Math.random() * 1500) + 1;
-	  this.width = Math.floor(Math.random() * 1500) + 1;
-	  this.stroke = (0, _randomColor.getRandomRgb)();
-	  this.stroke_width = Math.floor(Math.random() * 5) + 1;
-	  this.fill = (0, _randomColor.getRandomRgb)();
-	  this.opacity = Math.random();
-	  this.animation_attr = attributes[Math.floor(Math.random() * 3) + 1];
-	  this.animation_from = Math.floor(Math.random() * 500) + 1;
-	  this.animation_to = Math.floor(Math.random() * 500) + 1;
-	  this.animation_dur = Math.floor(Math.random() * 120) + 1;
-	  this.animation_repeat = Math.floor(Math.random() * 120) + 1;
-	  this.animated = false;
-	};
-
-	exports.Rectangle = Rectangle;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.lineHtml = undefined;
-
-	var _line = __webpack_require__(8);
-
-	function lineHtml() {
-	  var line = new _line.Line();
-	  var html = "<line ";
-	  html += 'x1=\'' + line.x1 + '\' y1=\'' + line.y1 + '\' x2=\'' + line.x2 + '\' y2=\'' + line.y2 + '\' stroke=\'' + line.stroke + '\'';
-	  html += ' stroke-width=\'' + line.stroke_width + '\' fill=\'' + line.fill + '\' opacity=\'' + line.opacity + '\'>';
-	  if (line.animated) {
-	    html += ' <animate attributetype="XML" attributename=\'' + line.animation_attr + '\' from=\'' + line.animation_from + '\' to=\'' + line.animation_to + '\' dur=\'' + line.animation_dur + '\' repeatcount=\'indefinite\' />';
-	  }
-	  html += '</line>';
-	  return html;
-	}
-
-	exports.lineHtml = lineHtml;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Line = undefined;
-
-	var _randomColor = __webpack_require__(4);
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var Line = function Line() {
-	  _classCallCheck(this, Line);
-
-	  var attributes = ['x', 'y', 'width', 'height'];
-	  var trueOrFalse = [true, false];
-
-	  this.x1 = Math.floor(Math.random() * 3500) + 1;
-	  this.y1 = Math.floor(Math.random() * 3500) + 1;
-	  this.x2 = Math.floor(Math.random() * 3500) + 1;
-	  this.y2 = Math.floor(Math.random() * 3500) + 1;
-	  this.height = Math.floor(Math.random() * 1500) + 1;
-	  this.width = Math.floor(Math.random() * 1500) + 1;
-	  this.stroke = (0, _randomColor.getRandomRgb)();
-	  this.stroke_width = Math.floor(Math.random() * 5) + 1;
-	  this.fill = (0, _randomColor.getRandomRgb)();
-	  this.opacity = Math.random();
-	  this.animation_attr = attributes[Math.floor(Math.random() * 3) + 1];
-	  this.animation_from = Math.floor(Math.random() * 500) + 1;
-	  this.animation_to = Math.floor(Math.random() * 500) + 1;
-	  this.animation_dur = Math.floor(Math.random() * 120) + 1;
-	  this.animation_repeat = Math.floor(Math.random() * 120) + 1;
-	  this.animated = false;
-	};
-
-	exports.Line = Line;
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.polylineHtml = undefined;
-
-	var _polyline = __webpack_require__(10);
-
-	function polylineHtml() {
-	  var polyline = new _polyline.Polyline();
-	  var html = "<polyline ";
-	  html += 'points=\'' + polyline.points + '\' stroke=\'' + polyline.stroke + '\'';
-	  html += ' stroke-width=\'' + polyline.stroke_width + '\' fill=\'' + polyline.fill + '\' opacity=\'' + polyline.opacity + '\'>';
-	  if (polyline.animated) {
-	    html += ' <animate attributetype="XML" attributename=\'' + polyline.animation_attr + '\' from=\'' + polyline.animation_from + '\' to=\'' + polyline.animation_to + '\' dur=\'' + polyline.animation_dur + '\' repeatcount=\'indefinite\' />';
-	  }
-	  html += '</polyline>';
-	  return html;
-	}
-
-	exports.polylineHtml = polylineHtml;
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Polyline = undefined;
-
-	var _randomColor = __webpack_require__(4);
-
-	var _createPoints = __webpack_require__(11);
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var Polyline = function Polyline() {
-	  _classCallCheck(this, Polyline);
-
-	  this.points = (0, _createPoints.createPoints)(Math.floor(Math.random() * 100) + 1);
-	  this.stroke = (0, _randomColor.getRandomRgb)();
-	  this.fill = (0, _randomColor.getRandomRgb)();
-	  this.opacity = Math.random();
-	};
-
-	exports.Polyline = Polyline;
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.createPoints = createPoints;
-
-
-	function createPoints(num) {
-	  var points = '';
-	  var times = Math.floor(Math.random() * num) + 1;
-	  for (var i = 0; i < times; i++) {
-	    var num1 = Math.floor(Math.random() * 3500) + 1;
-	    var num2 = Math.floor(Math.random() * 3500) + 1;
-	    points += num1 + ',' + num2 + ' ';
-	  }
-	  return points.trim();
-	}
-
-/***/ }),
-/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
