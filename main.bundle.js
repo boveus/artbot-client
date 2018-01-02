@@ -46,7 +46,7 @@
 
 	'use strict';
 
-	//index.html
+	// index.html
 	__webpack_require__(1);
 
 /***/ }),
@@ -78,7 +78,6 @@
 	    click: function click(event) {
 	      var rectangle = (0, _rectangleHtml.rectangleHtml)();
 	      $('#main-svg').append(rectangle);
-	      console.log(rectangle);
 	      $('#svg-area').html($('#svg-area').html());
 	    }
 	  }, '#make-rectangle');
@@ -87,7 +86,6 @@
 	    click: function click(event) {
 	      var line = (0, _lineHtml.lineHtml)();
 	      $('#main-svg').append(line);
-	      console.log(line);
 	      $('#svg-area').html($('#svg-area').html());
 	    }
 	  }, '#make-line');
@@ -96,10 +94,15 @@
 	    click: function click(event) {
 	      var polyline = (0, _polylineHtml.polylineHtml)();
 	      $('#main-svg').append(polyline);
-	      console.log(polyline);
 	      $('#svg-area').html($('#svg-area').html());
 	    }
 	  }, '#make-polyline');
+
+	  $(document).on({
+	    click: function click(event) {
+	      $('#main-svg').empty();
+	    }
+	  }, '#clear-canvas');
 	});
 
 /***/ }),

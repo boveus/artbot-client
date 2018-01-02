@@ -23,11 +23,20 @@
   border-image: url('/src/gold-frame.jpg') 30 30 stretch;
 }
 
+#question-mark {
+  background-image: url('/src/question_mark.svg');
+  width: 55px;
+  height: 70px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .container {
   margin-top: 2%;
   margin-left: 2%;
   display: grid;
-  grid-template-columns: 20% 20% 20% 20%;
+  grid-template-columns: 13% 13% 13% 13% 13%;
   grid-gap: 10%;
   background-color: #fff;
   color: #444;
