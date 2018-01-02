@@ -48,3 +48,9 @@
   object-fit: contain;
   border-style: solid;
 }
+
+.oval {
+ -webkit-border-radius: 50%;
+ -moz-border-radius: 50%;
+ border-radius: 50%;
+}
