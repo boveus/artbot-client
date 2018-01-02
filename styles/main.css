@@ -20,6 +20,8 @@
 }
 
 .border {
+  width: 100%;
+  height: 500px;
   border-image: url('/src/gold-frame.jpg') 30 30 stretch;
 }
 
