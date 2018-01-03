@@ -5,7 +5,11 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="styles/main.css">
   <title> Artbot </title>
-  <h3> Artbot </h3>
+  <div id='artbot-header'>
+    <h1> Artbot </h1>
+    <img id='frank' src='/src/frank.png' />
+  </div>
+
 </head>
 
 <button id='clear-canvas'> Clear Canvas </button>
@@ -45,6 +49,12 @@
       <div id='question-mark'>
       </div>
     </div>
+  </div>
+
+  <h1>Randomness</h1>
+
+  <div class=" " "slidecontainer">
+    <input type="range" min="1" max="100" value="50" class="slider" id="randomness-slider">
   </div>
 
   <script src="main.bundle.js"></script>
