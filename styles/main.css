@@ -116,11 +116,6 @@ li a {
     text-decoration: none;
 }
 
-.left {
-  padding-left: 1%;
-  padding-top: 1%;
-}
-
 .right {
   padding-left: 80%;
   padding-right: 1%;
@@ -134,9 +129,29 @@ li a {
   -webkit-border-radius: 40%;
   -moz-border-radius: 40%;
   border-radius: 40%;
-  animation: rotation 60s infinite linear;
+  animation: rotation 30s infinite linear;
 }
 
 @keyframes rotation {
   100%{ transform:rotatey(360deg) }
+}
+
+/* Buttons */
+
+.btn {
+  margin-top: 1%;
+  -webkit-border-radius: 34;
+  -moz-border-radius: 34;
+  border-radius: 34px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 20px;
+  background: #000000;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #636363;
+  text-decoration: none;
 }
