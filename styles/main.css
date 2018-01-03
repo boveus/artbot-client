@@ -22,11 +22,10 @@
 .border {
   width: 100%;
   height: 500px;
-  border-image: url('/src/gold-frame.jpg') 30 30 stretch;
 }
 
 #question-mark {
-  background-image: url('/src/question_mark.svg');
+  background-image: url('../src/question_mark.svg');
   width: 55px;
   height: 70px;
   background-size: cover;
