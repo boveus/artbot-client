@@ -48,6 +48,7 @@
 
 	// index.html
 	__webpack_require__(1);
+	__webpack_require__(14);
 
 /***/ }),
 /* 1 */
@@ -63,7 +64,9 @@
 
 	var _polylineHtml = __webpack_require__(9);
 
-	var $ = __webpack_require__(12);
+	var _randomArt = __webpack_require__(12);
+
+	var $ = __webpack_require__(13);
 
 	$(document).ready(function () {
 	  $(document).on({
@@ -100,9 +103,33 @@
 
 	  $(document).on({
 	    click: function click(event) {
+	      var art = (0, _randomArt.randomArt)();
+	      $('#main-svg').append(art);
+	      $('#svg-area').html($('#svg-area').html());
+	    }
+	  }, '#random-art');
+
+	  $(document).on({
+	    click: function click(event) {
 	      $('#main-svg').empty();
 	    }
 	  }, '#clear-canvas');
+
+	  $(document).on({
+	    click: function click(event) {
+	      var shapeArray = [(0, _polylineHtml.polylineHtml)(), (0, _lineHtml.lineHtml)(), (0, _rectangleHtml.rectangleHtml)(), (0, _circleHtml.circleHtml)()];
+	      var randomNumber = Math.floor(Math.random() * shapeArray.length);
+	      var shape = shapeArray[randomNumber];
+	      $('#main-svg').append(shape);
+	      $('#svg-area').html($('#svg-area').html());
+	    }
+	  }, '#question-mark');
+
+	  $(document).on({
+	    change: function change(event) {
+	      console.log($('#randomness-slider').val());
+	    }
+	  }, '#randomness-slider');
 	});
 
 /***/ }),
@@ -152,9 +179,9 @@
 
 	  var attributes = ['cx', 'cy', 'cr'];
 
-	  this.x = Math.floor(Math.random() * 500) + 1;
-	  this.y = Math.floor(Math.random() * 500) + 1;
-	  this.radius = Math.floor(Math.random() * 400) + 1;
+	  this.x = Math.floor(Math.random() * 1500) + 1;
+	  this.y = Math.floor(Math.random() * 1500) + 1;
+	  this.radius = Math.floor(Math.random() * 500) + 1;
 	  this.stroke = (0, _randomColor.getRandomRgb)();
 	  this.stroke_width = Math.floor(Math.random() * 5) + 1;
 	  this.fill = (0, _randomColor.getRandomRgb)();
@@ -204,7 +231,7 @@
 
 	function rectangleHtml() {
 	  var rectangle = new _rectangle.Rectangle();
-	  var html = "<rect ";
+	  var html = '<rect ';
 	  html += 'x=\'' + rectangle.x + '\' y=\'' + rectangle.y + '\' height=\'' + rectangle.height + '\' width=\'' + rectangle.width + '\' stroke=\'' + rectangle.stroke + '\'';
 	  html += ' stroke-width=\'' + rectangle.stroke_width + '\' fill=\'' + rectangle.fill + '\' opacity=\'' + rectangle.opacity + '\'>';
 	  if (rectangle.animated) {
@@ -301,19 +328,19 @@
 
 	  var attributes = ['x', 'y', 'width', 'height'];
 
-	  this.x1 = Math.floor(Math.random() * 500) + 1;
-	  this.y1 = Math.floor(Math.random() * 500) + 1;
-	  this.x2 = Math.floor(Math.random() * 500) + 1;
-	  this.y2 = Math.floor(Math.random() * 500) + 1;
-	  this.height = Math.floor(Math.random() * 500) + 1;
-	  this.width = Math.floor(Math.random() * 500) + 1;
+	  this.x1 = Math.floor(Math.random() * 1500) + 1;
+	  this.y1 = Math.floor(Math.random() * 1500) + 1;
+	  this.x2 = Math.floor(Math.random() * 1500) + 1;
+	  this.y2 = Math.floor(Math.random() * 1500) + 1;
+	  this.height = Math.floor(Math.random() * 1500) + 1;
+	  this.width = Math.floor(Math.random() * 1500) + 1;
 	  this.stroke = (0, _randomColor.getRandomRgb)();
 	  this.stroke_width = Math.floor(Math.random() * 5) + 1;
 	  this.fill = (0, _randomColor.getRandomRgb)();
 	  this.opacity = Math.random();
 	  this.animation_attr = attributes[Math.floor(Math.random() * 3) + 1];
-	  this.animation_from = Math.floor(Math.random() * 500) + 1;
-	  this.animation_to = Math.floor(Math.random() * 500) + 1;
+	  this.animation_from = Math.floor(Math.random() * 1500) + 1;
+	  this.animation_to = Math.floor(Math.random() * 1500) + 1;
 	  this.animation_dur = Math.floor(Math.random() * 120) + 1;
 	  this.animation_repeat = Math.floor(Math.random() * 120) + 1;
 	  this.animated = false;
@@ -370,8 +397,9 @@
 
 	  this.points = (0, _createPoints.createPoints)(Math.floor(Math.random() * 100) + 1);
 	  this.stroke = (0, _randomColor.getRandomRgb)();
-	  this.fill = (0, _randomColor.getRandomRgb)();
-	  this.opacity = Math.random();
+	  this.stroke_width = Math.floor(Math.random() * 5) + 1;
+	  this.fill = 'none';
+	  // this.opacity = Math.random()
 	};
 
 	exports.Polyline = Polyline;
@@ -392,8 +420,8 @@
 	  var points = '';
 	  var times = Math.floor(Math.random() * num) + 1;
 	  for (var i = 0; i < times; i++) {
-	    var num1 = Math.floor(Math.random() * 500) + 1;
-	    var num2 = Math.floor(Math.random() * 500) + 1;
+	    var num1 = Math.floor(Math.random() * 1500) + 1;
+	    var num2 = Math.floor(Math.random() * 1500) + 1;
 	    points += num1 + ',' + num2 + ' ';
 	  }
 	  return points.trim();
@@ -401,6 +429,39 @@
 
 /***/ }),
 /* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.randomArt = undefined;
+
+	var _circleHtml = __webpack_require__(2);
+
+	var _rectangleHtml = __webpack_require__(5);
+
+	var _lineHtml = __webpack_require__(7);
+
+	var _polylineHtml = __webpack_require__(9);
+
+	function randomArt() {
+	  var html = '';
+	  var times = Math.floor(Math.random() * 10) + 1;
+	  for (var i = 0; i < times; i++) {
+	    html += (0, _rectangleHtml.rectangleHtml)();
+	    html += (0, _circleHtml.circleHtml)();
+	    html += (0, _lineHtml.lineHtml)();
+	    html += (0, _polylineHtml.polylineHtml)();
+	  }
+	  return html;
+	}
+
+	exports.randomArt = randomArt;
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10657,6 +10718,24 @@
 	return jQuery;
 	} );
 
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var $ = __webpack_require__(13);
+
+	$(document).on({
+	  change: function change(event) {
+	    if ($('#viewport-shape').val() === 'oval') {
+	      $('#main-svg, #svg-area').addClass('oval');
+	    } else if ($('#viewport-shape').val() === 'rectangle') {
+	      $('#main-svg, #svg-area').removeClass('oval');
+	    }
+	  }
+	}, '#viewport-shape');
 
 /***/ })
 /******/ ]);
