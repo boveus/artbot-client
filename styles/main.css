@@ -55,13 +55,9 @@
  border-radius: 50%;
 }
 
-#frank {
-  height: 10%;
-  width: 10%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-}
+
+
+/* Slider s */
 
 .slidecontainer {
     width: 100%;
@@ -100,4 +96,47 @@
     border-radius: 50%;
     background: grey;
     cursor: pointer;
+}
+
+/* Header */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 2.5%;
+    overflow: hidden;
+    background-color: black;
+}
+
+li a {
+    display: block;
+    color: white;
+    font-size: 32px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.left {
+  padding-left: 1%;
+  padding-top: 1%;
+}
+
+.right {
+  padding-left: 80%;
+  padding-right: 1%;
+  padding-top: 1%;
+}
+
+.frank {
+  position: absolute;
+  height: 12%;
+  width: 12%;
+  -webkit-border-radius: 40%;
+  -moz-border-radius: 40%;
+  border-radius: 40%;
+  animation: rotation 60s infinite linear;
+}
+
+@keyframes rotation {
+  100%{ transform:rotatey(360deg) }
 }
